@@ -5,7 +5,7 @@
   <a href="https://github.com/omkamal/animated-diagrams-skill/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/omkamal/animated-diagrams-skill?style=flat&logo=github"></a>
   <a href="https://github.com/omkamal/animated-diagrams-skill/network/members"><img alt="GitHub forks" src="https://img.shields.io/github/forks/omkamal/animated-diagrams-skill?style=flat&logo=github"></a>
   <a href="https://github.com/omkamal/animated-diagrams-skill/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/omkamal/animated-diagrams-skill"></a>
-  <img alt="Node >= 22" src="https://img.shields.io/badge/node-%3E%3D22-339933?logo=node.js&logoColor=white">
+  <img alt="Node.js 22+" src="https://img.shields.io/badge/node-22%2B-339933?logo=nodedotjs&logoColor=white">
   <a href="https://docs.claude.com/en/docs/claude-code/skills"><img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-d97757"></a>
   <a href="https://gsap.com"><img alt="GSAP 3" src="https://img.shields.io/badge/GSAP-3-88CE02?logo=greensock&logoColor=white"></a>
 </p>
