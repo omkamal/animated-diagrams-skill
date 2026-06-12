@@ -156,3 +156,6 @@ output/
 # ...EXCEPT the README demo media and the committed sample outputs
 !docs/media/**
 !examples/**
+
+# the promo Short lives on YouTube, not in git (poster stays for the README)
+docs/media/youtube-short.mp4

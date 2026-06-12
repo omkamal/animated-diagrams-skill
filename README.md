@@ -30,6 +30,15 @@ skill so anyone can install and use it. Once installed, you just *ask* —
 *“animated sequence diagram”* — and Claude authors the SVG scene, choreographs
 it, renders it, visually verifies the result, and hands you the files.
 
+### 📱 45-second overview
+
+A narrated vertical overview (built *with this skill* — embedded animations,
+voice-over, and a closing QR). **▶ Watch on YouTube:**
+
+<p align="center">
+  <a href="https://youtu.be/CjVBFqqZOMk"><img src="docs/media/youtube-short-poster.png" alt="Watch the 45-second animated-svg overview on YouTube" width="300"></a>
+</p>
+
 ---
 
 ## What it does
