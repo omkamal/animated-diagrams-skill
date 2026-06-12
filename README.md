@@ -155,7 +155,13 @@ Six more presets (`pastel`, `mono`, `editorial`, `glass`, `brutalist`,
 | **ffmpeg** | any recent | GIF/WebM derivation, audio muxing |
 | **Python 3** | ≥ 3.8 | helper scripts (SVG prep, SRT parsing, code highlighting) |
 | **Chrome** | — | downloaded automatically by HyperFrames on first setup (one-time) |
-| OS | Linux / macOS / WSL | scripts are bash |
+| OS | Linux / macOS / WSL | one universal `setup.sh` (POSIX-portable; works under macOS zsh and Linux bash) |
+
+> **macOS:** the prerequisites come from Homebrew — `brew install node ffmpeg python`.
+> The setup script must be **run, not sourced** — use `bash scripts/setup.sh`
+> (or `./scripts/setup.sh`), **not** `. scripts/setup.sh`. Sourcing it into your
+> shell breaks self-path detection and the script now refuses with a hint instead
+> of installing to the wrong place.
 
 ## Install
 
@@ -171,8 +177,10 @@ cd animated-diagrams-skill
 
 # 2. One-time setup: installs npm deps (gsap + hyperframes), vendors the GSAP
 #    plugins, downloads Chrome if needed, and runs a smoke render to prove
-#    everything works end-to-end
-bash scripts/setup.sh
+#    everything works end-to-end.
+#    Run it — do NOT `source`/`.` it (that breaks self-path detection).
+#    macOS prerequisites: brew install node ffmpeg python
+bash scripts/setup.sh           # or: ./scripts/setup.sh
 
 # 3. Expose it to Claude Code as the `animated-svg` skill
 mkdir -p ~/.claude/skills

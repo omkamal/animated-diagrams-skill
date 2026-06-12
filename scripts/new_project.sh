@@ -12,9 +12,27 @@
 #
 # Creates <PARENT_DIR>/animated-svg-<slug>/ (default PARENT_DIR = caller's cwd;
 # inside --dir the folder is named just <slug> when PARENT_DIR ends in .smoke).
+# Run it, do NOT source it (sourcing breaks self-path resolution).
+__sourced=0
+if [ -n "${ZSH_VERSION:-}" ]; then
+  case "${ZSH_EVAL_CONTEXT:-}" in *:file*) __sourced=1 ;; esac
+elif [ -n "${BASH_VERSION:-}" ]; then
+  [ "${BASH_SOURCE:-$0}" != "$0" ] && __sourced=1
+fi
+if [ "$__sourced" = 1 ]; then
+  printf 'animated-svg: run this script, do not source it:\n    bash scripts/new_project.sh ...\n' >&2
+  return 1 2>/dev/null || exit 1
+fi
+
 set -euo pipefail
 
-SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# Portable self-path: bash exposes BASH_SOURCE; zsh uses $0.
+__self="${BASH_SOURCE:-$0}"
+SKILL_DIR="$(cd "$(dirname "$__self")/.." && pwd)"
+[ -f "$SKILL_DIR/package.json" ] || {
+  echo "ERROR: cannot locate the skill root from '$__self' (got '$SKILL_DIR')." >&2
+  exit 1
+}
 
 SLUG="${1:?usage: new_project.sh <slug> [--theme ..] [--width ..] [--height ..] [--duration ..] [--transparent] [--dir ..]}"
 shift
@@ -56,7 +74,9 @@ fi
 sed -e "s/__WIDTH__/$WIDTH/g" -e "s/__HEIGHT__/$HEIGHT/g" -e "s/__DURATION__/$DURATION/g" \
   "$SKILL_DIR/assets/template/composition.html" > "$DEST/index.html"
 if [ "$LANG_MODE" = "ar" ]; then
-  sed -i 's/<html lang="en">/<html lang="ar" dir="rtl">/' "$DEST/index.html"
+  # Portable in-place edit (GNU sed and BSD/macOS sed differ on `sed -i`).
+  sed 's/<html lang="en">/<html lang="ar" dir="rtl">/' "$DEST/index.html" > "$DEST/index.html.tmp" \
+    && mv "$DEST/index.html.tmp" "$DEST/index.html"
 fi
 printf '{\n  "id": "%s",\n  "name": "%s"\n}\n' "$SLUG" "$SLUG" > "$DEST/meta.json"
 

@@ -1,15 +1,40 @@
 #!/usr/bin/env bash
-# One-time setup for the animated-svg skill:
+# One-time setup for the animated-svg skill (macOS zsh + Linux bash):
 #   npm install → vendor GSAP dist files → ensure Chrome → warm-up smoke render.
+#
+# Run it, do NOT source it:   bash scripts/setup.sh   (or ./scripts/setup.sh)
+# Sourcing (`. setup.sh`) runs it in your shell, where the script can't find its
+# own path — it would resolve to "/" and npm-install at your filesystem root.
+
+# ── Guard: must be executed, not sourced; works in zsh (macOS) and bash ──────
+__sourced=0
+if [ -n "${ZSH_VERSION:-}" ]; then
+  case "${ZSH_EVAL_CONTEXT:-}" in *:file*) __sourced=1 ;; esac
+elif [ -n "${BASH_VERSION:-}" ]; then
+  [ "${BASH_SOURCE:-$0}" != "$0" ] && __sourced=1
+fi
+if [ "$__sourced" = 1 ]; then
+  printf 'animated-svg: run this script, do not source it:\n    bash scripts/setup.sh\n' >&2
+  return 1 2>/dev/null || exit 1
+fi
+
 set -euo pipefail
 
-SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# Portable self-path: bash exposes BASH_SOURCE; zsh (e.g. `zsh setup.sh`) uses $0.
+__self="${BASH_SOURCE:-$0}"
+SKILL_DIR="$(cd "$(dirname "$__self")/.." && pwd)"
+if [ ! -f "$SKILL_DIR/package.json" ]; then
+  echo "ERROR: cannot locate the skill root from '$__self' (got '$SKILL_DIR')." >&2
+  echo "       Run it directly:  bash scripts/setup.sh" >&2
+  exit 1
+fi
 cd "$SKILL_DIR"
 
 echo "==> animated-svg setup in $SKILL_DIR"
 
-command -v node >/dev/null || { echo "ERROR: node not found (need Node >= 22)"; exit 1; }
-command -v ffmpeg >/dev/null || { echo "ERROR: ffmpeg not found"; exit 1; }
+command -v node >/dev/null || { echo "ERROR: node not found (need Node >= 22). macOS: brew install node"; exit 1; }
+command -v ffmpeg >/dev/null || { echo "ERROR: ffmpeg not found. macOS: brew install ffmpeg"; exit 1; }
+command -v python3 >/dev/null || { echo "ERROR: python3 not found (needed for the smoke render + authoring helpers). macOS: brew install python"; exit 1; }
 NODE_MAJOR=$(node -p "process.versions.node.split('.')[0]")
 [ "$NODE_MAJOR" -ge 22 ] || { echo "ERROR: Node >= 22 required (have $(node --version))"; exit 1; }
 

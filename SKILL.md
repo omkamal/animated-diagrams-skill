@@ -28,7 +28,10 @@ HF=$SKILL_DIR/node_modules/.bin/hyperframes
 
 **Setup gate**: if `$HF` does not exist, run `bash $SKILL_DIR/scripts/setup.sh`
 first (installs hyperframes + gsap, vendors GSAP plugins, ensures Chrome,
-smoke-renders). One-time, then everything is offline.
+smoke-renders). One-time, then everything is offline. The script is portable
+across macOS zsh and Linux bash — **run it, never `source`/`.` it** (sourcing
+breaks self-path detection; the script refuses with a hint). macOS prereqs:
+`brew install node ffmpeg python`.
 
 ## Workflow
 
