@@ -1,0 +1,109 @@
+/* ============================================================
+   animated-svg — base stylesheet (fonts + structural defaults)
+   A palette file from themes/ is appended below this block by
+   new_project.sh to define the CSS custom properties.
+   ============================================================ */
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body { font-family: "Inter", sans-serif; }
+
+/* ---- semantic SVG defaults (overridable inline) ---- */
+
+#scene { display: block; }
+
+#scene text {
+  font-family: "Inter", sans-serif;
+  fill: var(--text);
+}
+
+#scene .label   { fill: var(--text-muted); }
+#scene .mono    { font-family: "JetBrains Mono", monospace; }
+
+#scene .region > rect,
+#scene .region > path {
+  fill: var(--region-fill);
+  stroke: var(--region-stroke);
+  stroke-width: 2;
+  stroke-dasharray: 8 6;
+}
+#scene .region-title { fill: var(--region-stroke); font-size: 26px; letter-spacing: 0.08em; }
+
+#scene .node > rect,
+#scene .node > circle,
+#scene .node > path.node-shape {
+  fill: var(--node-fill);
+  stroke: var(--node-stroke);
+  stroke-width: 2.5;
+}
+
+#scene .edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+#scene .edge--flow {           /* dotted data-flow line: animate stroke-dashoffset, NOT drawSVG */
+  fill: none;
+  stroke: var(--edge);
+  stroke-dasharray: 2 12;
+  stroke-linecap: round;
+  stroke-width: 4;
+}
+
+#scene .edge-head { fill: var(--edge); }   /* separate arrowhead, faded in after its edge draws */
+
+#scene .pulse { fill: var(--accent); }
+
+#scene .lifeline { stroke: var(--edge); stroke-width: 2; stroke-dasharray: 6 8; }
+#scene .activation { fill: var(--node-fill); stroke: var(--node-stroke); stroke-width: 2; }
+
+#hud .title    { fill: var(--text); font-size: 54px; font-weight: 650; }
+#hud .subtitle { fill: var(--text-muted); font-size: 30px; }
+/* theme: dark (default) — deep-space navy with neon accents */
+:root {
+  --bg:            #0b1021;
+  --bg-raise:      #131a33;
+  --text:          #f1f5f9;
+  --text-muted:    #94a3b8;
+
+  --region-fill:   rgba(56, 189, 248, 0.04);
+  --region-stroke: #3b5e8c;
+
+  --node-fill:     #16203d;
+  --node-stroke:   #38bdf8;
+
+  --edge:          #64a8e0;
+  --accent:        #facc15;
+
+  /* categorical accents for node strokes / icons */
+  --c-blue:        #38bdf8;
+  --c-violet:      #a78bfa;
+  --c-green:       #34d399;
+  --c-amber:       #fbbf24;
+  --c-rose:        #fb7185;
+  --c-cyan:        #22d3ee;
+  --c-orange:      #fb923c;
+}

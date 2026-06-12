@@ -1,0 +1,130 @@
+/* ============================================================
+   animated-svg — base stylesheet (fonts + tokenized defaults)
+   A style preset from themes/ is appended below this block by
+   new_project.sh; it defines the CSS custom properties (palette,
+   fonts, shape language). See references/style-presets.md.
+   ============================================================ */
+
+@font-face { font-family: "Inter";          src: url("../../assets/fonts/Inter-Variable.woff2") format("woff2");        font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Space Grotesk";  src: url("../../assets/fonts/SpaceGrotesk-Variable.woff2") format("woff2"); font-weight: 300 700; font-display: block; }
+@font-face { font-family: "Nunito";         src: url("../../assets/fonts/Nunito-Variable.woff2") format("woff2");       font-weight: 200 900; font-display: block; }
+@font-face { font-family: "Fraunces";       src: url("../../assets/fonts/Fraunces-Variable.woff2") format("woff2");     font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Caveat";         src: url("../../assets/fonts/Caveat-Variable.woff2") format("woff2");       font-weight: 400 700; font-display: block; }
+@font-face { font-family: "Archivo";        src: url("../../assets/fonts/Archivo-Variable.woff2") format("woff2");      font-weight: 100 900; font-display: block; }
+@font-face { font-family: "JetBrains Mono"; src: url("../../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2"); font-weight: 400;     font-display: block; }
+@font-face { font-family: "IBM Plex Mono";  src: url("../../assets/fonts/IBMPlexMono-Regular.woff2") format("woff2");   font-weight: 400;     font-display: block; }
+/* Arabic */
+@font-face { font-family: "Cairo";     src: url("../../assets/fonts/Cairo-Arabic.woff2") format("woff2");        font-weight: 200 900; font-display: block; unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Cairo";     src: url("../../assets/fonts/Cairo-Latin.woff2") format("woff2");         font-weight: 200 900; font-display: block; unicode-range: U+0000-00FF; }
+@font-face { font-family: "Amiri";     src: url("../../assets/fonts/Amiri-Arabic.woff2") format("woff2");        font-weight: 400;     font-display: block; }
+@font-face { font-family: "Tajawal";   src: url("../../assets/fonts/Tajawal-Arabic.woff2") format("woff2");      font-weight: 400;     font-display: block; }
+@font-face { font-family: "Tajawal";   src: url("../../assets/fonts/Tajawal-Arabic-Bold.woff2") format("woff2"); font-weight: 700;     font-display: block; }
+@font-face { font-family: "Reem Kufi"; src: url("../../assets/fonts/ReemKufi-Arabic.woff2") format("woff2");     font-weight: 400 700; font-display: block; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body { font-family: var(--font-body, "Inter", sans-serif); }
+
+/* ---- semantic SVG defaults — all theme-token driven.
+   Authors: do NOT hardcode rx / stroke-width / font-family on the standard
+   classes; the active style preset controls the shape language. ---- */
+
+#scene { display: block; }
+
+#scene text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  fill: var(--text);
+}
+
+#scene .label { fill: var(--text-muted); }
+#scene .mono  { font-family: var(--font-mono, "JetBrains Mono", monospace); }
+
+#scene .region > rect,
+#scene .region > path {
+  fill: var(--region-fill);
+  stroke: var(--region-stroke);
+  stroke-width: var(--stroke-region, 2px);
+  stroke-dasharray: var(--dash-region, 8 6);
+  rx: var(--radius-region, 22px);
+}
+#scene .region-title {
+  fill: var(--region-stroke);
+  font-size: 26px;
+  letter-spacing: var(--tracking-region, 0.08em);
+}
+
+#scene .node > rect {
+  rx: var(--radius-node, 16px);
+}
+#scene .node > rect,
+#scene .node > circle,
+#scene .node > path.node-shape {
+  fill: var(--node-fill);
+  stroke: var(--node-stroke);
+  stroke-width: var(--stroke-node, 2.5px);
+}
+
+#scene .edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: var(--stroke-edge, 3.5px);
+  stroke-linecap: round;
+  stroke-dasharray: var(--dash-edge, none);
+}
+
+#scene .edge--flow {           /* dotted data-flow line: animate stroke-dashoffset, NOT drawSVG */
+  fill: none;
+  stroke: var(--edge);
+  stroke-dasharray: var(--dash-flow, 2 12);
+  stroke-linecap: round;
+  stroke-width: var(--stroke-flow, 4px);
+}
+
+#scene .edge-head { fill: var(--edge); }   /* separate arrowhead, faded in after its edge draws */
+
+#scene .pulse { fill: var(--accent); }
+
+#scene .lifeline   { stroke: var(--edge); stroke-width: 2; stroke-dasharray: 6 8; }
+#scene .activation { fill: var(--node-fill); stroke: var(--node-stroke); stroke-width: 2; }
+
+#hud .title {
+  fill: var(--text);
+  font-family: var(--font-title, var(--font-body, "Inter", sans-serif));
+  font-size: 54px;
+  font-weight: var(--weight-title, 650);
+}
+#hud .subtitle { fill: var(--text-muted); font-size: 30px; }
+/* style: light — Minimal Light (DEFAULT). White canvas, slate ink, calm blue
+   accent. Motion: classic 5-act, power2.out, understated. */
+:root {
+  --bg:            #ffffff;
+  --bg-raise:      #f8fafc;
+  --text:          #0f172a;
+  --text-muted:    #64748b;
+
+  --region-fill:   rgba(37, 99, 235, 0.035);
+  --region-stroke: #94a3b8;
+
+  --node-fill:     #ffffff;
+  --node-stroke:   #2563eb;
+
+  --edge:          #475569;
+  --accent:        #d97706;
+
+  --font-title:    "Inter", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+
+  --radius-node:   16px;
+  --stroke-node:   2.5px;
+  --stroke-edge:   3px;
+
+  --c-blue:   #2563eb; --c-violet: #7c3aed; --c-green: #059669;
+  --c-amber:  #d97706; --c-rose:   #e11d48; --c-cyan:  #0891b2;
+  --c-orange: #ea580c;
+}

@@ -1,0 +1,11 @@
+1
+00:00:00,300 --> 00:00:02,548
+Every product begins with an idea.
+
+2
+00:00:02,998 --> 00:00:05,369
+You build it, piece by piece.
+
+3
+00:00:05,819 --> 00:00:07,078
+And then — you launch.

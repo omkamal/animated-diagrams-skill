@@ -87,7 +87,7 @@ maps, before/after splits — built from 200k+ open-licensed cliparts & emojis
 fetched from Iconify (color emojis keep their colors; line icons take the theme
 color).
 
-<p align="center"><img src="docs/media/concept.gif" alt="Concept illustration: idea → build → launch, animated with emoji and line-icon cliparts" width="520"></p>
+<p align="center"><img src="docs/media/concept.gif" alt="Concept illustration: idea → build → launch, animated with emoji cliparts" width="520"></p>
 
 → [`references/concept-illustrations.md`](references/concept-illustrations.md)
 

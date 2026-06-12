@@ -3,6 +3,12 @@
 Real, unedited deliverables produced by the skill's render pipeline — committed
 so you can see exactly what you get before installing anything.
 
+Each folder is a **runnable project**: its `index.html` is the authoring source,
+and it references the repo's shared `../../assets/` (fonts + vendored GSAP), so
+after cloning you can open any `index.html` directly in a browser, or re-render
+it with `node scripts/render.mjs --project examples/<name>`. The
+`*.interactive.html` players are fully self-contained (no dependencies at all).
+
 ## `architecture-demo/` — cloud architecture animation
 
 A "Serverless Checkout" AWS request path (Users → CDN → Load Balancer →
@@ -20,22 +26,20 @@ camera zoom into the compute + data pair.
 The animated GIF deliverable for this same scene is the hero at the top of the
 [main README](../README.md) (`docs/media/hero.gif`).
 
-> `index.html` references its scaffold-local `theme.css` / `vendor/` / `fonts/`
-> directories, so it is committed here as a *source listing* to read — to run it
-> live, scaffold a project with `scripts/new_project.sh` and copy the file in.
-
 ## `concept-demo/` — concept illustration + voice-over sync
 
-A minimal concept strip (💡 Idea → Build → 🚀 Launch) built with **cliparts
-fetched from Iconify** (noto color emojis keep their own colors, the lucide
-database icon takes the theme color), animated with camera moves, and — in the
-narrated MP4 — every beat fired on its SRT cue with the **narration audio muxed
-into the video** (h264 + aac).
+A concept strip (💡 Idea → 🛠️ Build → 🚀 Launch) built with **noto color-emoji
+cliparts**, with **real narration** (generated with TTS) where every beat fires
+exactly on its SRT cue and the audio is **muxed into the MP4** (h264 + aac).
+Idea appears as *"Every product begins with an idea"* is spoken, Build as
+*"you build it, piece by piece"*, Launch on *"and then — you launch."*
 
 | File | What it is |
 |---|---|
-| [`index.html`](concept-demo/index.html) | Authoring source — note the `<symbol id="clip-*">` defs injected by `fetch_clipart.mjs` and the `<audio id="narration">` clip. |
-| [`renders/concept-narrated.mp4`](concept-demo/renders/concept-narrated.mp4) | The narrated render — **turn your sound on**: animation beats land exactly on the narration cues. |
+| [`index.html`](concept-demo/index.html) | Authoring source — the `<symbol id="clip-noto-*">` emoji defs, the `<audio id="narration">` clip, and beats placed at the cue start times. |
+| [`audio/narration.srt`](concept-demo/audio/narration.srt) · [`audio/narration.wav`](concept-demo/audio/narration.wav) | The narration script (SRT cues) and the spoken audio that drives the timing. |
+| [`renders/concept-narrated.mp4`](concept-demo/renders/concept-narrated.mp4) | The narrated render — **turn your sound on**: each station appears as it's spoken. |
+| [`renders/concept-narrated.interactive.html`](concept-demo/renders/concept-narrated.interactive.html) | Self-contained interactive player. |
 
 The silent GIF version is embedded in the main README's concept-illustration
 section (`docs/media/concept.gif`).
