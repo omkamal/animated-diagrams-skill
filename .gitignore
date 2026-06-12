@@ -159,3 +159,8 @@ output/
 
 # the promo Short lives on YouTube, not in git (poster stays for the README)
 docs/media/youtube-short.mp4
+
+# Local Remotion intro-video project (build + assets live on YouTube, not in git)
+video-intro/
+
+CLAUDE.md
