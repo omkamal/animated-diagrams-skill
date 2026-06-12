@@ -1,0 +1,47 @@
+<!-- cloud-gcp.svg — ORIGINAL stylized geometric icons evoking GCP service roles.
+     NOT official Google Cloud icons. 48x48 viewBox, stroke="currentColor". -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-gcp-gce" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="10" width="28" height="28" rx="3"/>
+    <rect x="19" y="19" width="10" height="10" rx="1.5"/>
+    <path d="M17 10 v-5 M24 10 v-5 M31 10 v-5 M17 43 v-5 M24 43 v-5 M31 43 v-5 M10 17 h-5 M10 24 h-5 M10 31 h-5 M43 17 h-5 M43 24 h-5 M43 31 h-5"/>
+  </symbol>
+  <symbol id="icon-gcp-gke" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 5 l16 9 v20 l-16 9 l-16-9 V14 z"/>
+    <circle cx="24" cy="24" r="6"/>
+    <path d="M24 18 v-6 M29.2 27 l5.5 3.2 M18.8 27 l-5.5 3.2"/>
+  </symbol>
+  <symbol id="icon-gcp-cloudrun" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 8 l24 16 l-24 16 z"/>
+    <path d="M34 8 v32" stroke-width="3"/>
+  </symbol>
+  <symbol id="icon-gcp-functions" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 10 c-5 0 -5 6 -5 9 s0 5 -4 5 c4 0 4 2 4 5 s0 9 5 9 M34 10 c5 0 5 6 5 9 s0 5 4 5 c-4 0 -4 2 -4 5 s0 9 -5 9"/>
+    <circle cx="24" cy="24" r="3" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-gcp-pubsub" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="5"/>
+    <circle cx="10" cy="12" r="4"/>
+    <circle cx="38" cy="12" r="4"/>
+    <circle cx="10" cy="36" r="4"/>
+    <circle cx="38" cy="36" r="4"/>
+    <path d="M13.5 14.5 l6.5 6 M34.5 14.5 l-6.5 6 M13.5 33.5 l6.5-6 M34.5 33.5 l-6.5-6"/>
+  </symbol>
+  <symbol id="icon-gcp-bigquery" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="22" cy="22" r="13"/>
+    <path d="M32 32 l9 9" stroke-width="3.5"/>
+    <path d="M16 25 v-4 M22 25 v-8 M28 25 v-6"/>
+  </symbol>
+  <symbol id="icon-gcp-gcs" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="10" width="34" height="12" rx="3"/>
+    <rect x="7" y="26" width="34" height="12" rx="3"/>
+    <path d="M13 16 h8 M13 32 h8"/>
+    <circle cx="34" cy="16" r="1.8" fill="currentColor" stroke="none"/>
+    <circle cx="34" cy="32" r="1.8" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-gcp-sql" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="11" rx="13" ry="5.5"/>
+    <path d="M11 11 v26 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5 V11"/>
+    <path d="M11 24 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5"/>
+  </symbol>
+</svg>

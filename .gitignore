@@ -141,3 +141,18 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# --- animated-svg skill runtime artifacts ---
+# Scaffolded animation projects (created in user's cwd, not part of the skill)
+animated-svg-*/
+# Smoke-test renders and scratch output
+.smoke/
+output/
+# Rendered media are NOT committed in general...
+*.mp4
+*.gif
+*.webm
+*.mov
+# ...EXCEPT the README demo media and the committed sample outputs
+!docs/media/**
+!examples/**

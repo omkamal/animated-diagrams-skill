@@ -1,0 +1,40 @@
+/* style: mono — Paper Terminal. White paper, near-black ink, IBM Plex Mono
+   everywhere, square corners. Motion: stepped/typewriter (steps() eases,
+   set-based reveals), no curves. */
+:root {
+  --bg:            #ffffff;
+  --bg-raise:      #f5f5f4;
+  --text:          #1c1917;
+  --text-muted:    #78716c;
+
+  --region-fill:   rgba(28, 25, 23, 0.02);
+  --region-stroke: #a8a29e;
+
+  --node-fill:     #ffffff;
+  --node-stroke:   #1c1917;
+
+  --edge:          #44403c;
+  --accent:        #16a34a;
+
+  --font-title:    "IBM Plex Mono", monospace;
+  --font-body:     "IBM Plex Mono", monospace;
+  --font-mono:     "IBM Plex Mono", monospace;
+  --weight-title:  400;
+
+  --radius-node:   2px;
+  --radius-region: 2px;
+  --stroke-node:   1.5px;
+  --stroke-edge:   1.5px;
+  --dash-region:   4 4;
+  --tracking-region: 0.12em;
+
+  --c-blue:   #2563eb; --c-violet: #7c3aed; --c-green: #16a34a;
+  --c-amber:  #d97706; --c-rose:   #dc2626; --c-cyan:  #0891b2;
+  --c-orange: #ea580c;
+}
+
+/* code-walkthrough token colors (paper terminal: restrained, ink + two accents) */
+:root {
+  --tok-kw: #1c1917; --tok-def: #1c1917; --tok-builtin: #44403c;
+  --tok-str: #16a34a; --tok-num: #b45309; --tok-comment: #a8a29e; --tok-deco: #44403c;
+}

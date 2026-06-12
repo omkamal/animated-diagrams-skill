@@ -1,0 +1,34 @@
+/* style: wireframe — Lo-fi Wireframe. White canvas, gray dashed everything,
+   placeholder aesthetic. Motion: quick utilitarian fades (0.3s), no flourish —
+   reads like a spec, not a show. */
+:root {
+  --bg:            #ffffff;
+  --bg-raise:      #f9fafb;
+  --text:          #374151;
+  --text-muted:    #9ca3af;
+
+  --region-fill:   rgba(107, 114, 128, 0.03);
+  --region-stroke: #d1d5db;
+
+  --node-fill:     #f9fafb;
+  --node-stroke:   #6b7280;
+
+  --edge:          #9ca3af;
+  --accent:        #6b7280;
+
+  --font-title:    "Inter", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  500;
+
+  --radius-node:   6px;
+  --stroke-node:   1.5px;
+  --stroke-edge:   1.5px;
+  --dash-edge:     6 4;          /* dashed edges — skip DrawSVG, fade them in */
+  --dash-region:   4 4;
+  --stroke-region: 1.5px;
+
+  --c-blue:   #6b7280; --c-violet: #6b7280; --c-green: #6b7280;
+  --c-amber:  #6b7280; --c-rose:   #6b7280; --c-cyan:  #6b7280;
+  --c-orange: #6b7280;
+}

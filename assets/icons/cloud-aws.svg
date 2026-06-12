@@ -1,0 +1,70 @@
+<!-- cloud-aws.svg — ORIGINAL stylized geometric icons evoking AWS service roles.
+     These are NOT official AWS icons (trademarked); they are clean line glyphs.
+     48x48 viewBox, stroke="currentColor". Suggested accents: compute=--c-orange,
+     storage=--c-green, database=--c-blue, network=--c-violet, integration=--c-rose. -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-aws-ec2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12" y="12" width="24" height="24" rx="3"/>
+    <path d="M18 12 v-6 M24 12 v-6 M30 12 v-6 M18 42 v-6 M24 42 v-6 M30 42 v-6 M12 18 h-6 M12 24 h-6 M12 30 h-6 M42 18 h-6 M42 24 h-6 M42 30 h-6"/>
+  </symbol>
+  <symbol id="icon-aws-lambda" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="36" height="36" rx="6"/>
+    <path d="M16 14 h6 l10 20 h-6 z M20 26 l-5 8"/>
+  </symbol>
+  <symbol id="icon-aws-s3" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 10 l4 30 c0 2 4.5 3.5 10 3.5 s10-1.5 10-3.5 l4-30"/>
+    <ellipse cx="24" cy="10" rx="14" ry="5"/>
+    <circle cx="24" cy="27" r="5"/>
+  </symbol>
+  <symbol id="icon-aws-rds" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="12" rx="13" ry="5.5"/>
+    <path d="M11 12 v24 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5 V12"/>
+    <path d="M11 24 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5"/>
+    <path d="M4 18 l5 6 l-5 6 M44 18 l-5 6 l5 6"/>
+  </symbol>
+  <symbol id="icon-aws-dynamodb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="11" rx="13" ry="5.5"/>
+    <path d="M11 11 v26 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5 V11"/>
+    <path d="M30 18 l-8 8 h6 l-4 8" stroke-width="3"/>
+  </symbol>
+  <symbol id="icon-aws-sqs" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="17" width="10" height="14" rx="2"/>
+    <rect x="19" y="17" width="10" height="14" rx="2"/>
+    <rect x="33" y="17" width="10" height="14" rx="2"/>
+    <path d="M15 24 h4 M29 24 h4" stroke-dasharray="2 3"/>
+  </symbol>
+  <symbol id="icon-aws-sns" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="13" cy="24" r="5"/>
+    <circle cx="36" cy="10" r="4"/>
+    <circle cx="36" cy="24" r="4"/>
+    <circle cx="36" cy="38" r="4"/>
+    <path d="M17.5 21.5 L32 11.5 M18 24 h14 M17.5 26.5 L32 36.5"/>
+  </symbol>
+  <symbol id="icon-aws-alb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="24" r="7"/>
+    <circle cx="38" cy="10" r="4"/>
+    <circle cx="38" cy="24" r="4"/>
+    <circle cx="38" cy="38" r="4"/>
+    <path d="M18 21 L34 11.5 M19 24 h15 M18 27 L34 36.5"/>
+  </symbol>
+  <symbol id="icon-aws-apigw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="6" width="20" height="36" rx="4"/>
+    <path d="M8 18 l-4 6 l4 6 M40 18 l4 6 l-4 6"/>
+    <path d="M21 18 l-3.5 6 l3.5 6 M27 18 l3.5 6 l-3.5 6"/>
+  </symbol>
+  <symbol id="icon-aws-cloudfront" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="17"/>
+    <circle cx="24" cy="13" r="3.5"/>
+    <circle cx="14" cy="31" r="3.5"/>
+    <circle cx="34" cy="31" r="3.5"/>
+    <path d="M24 16.5 v6 M16.8 28.5 l4.5-3 M31.2 28.5 l-4.5-3"/>
+  </symbol>
+  <symbol id="icon-aws-vpc" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="10" width="36" height="28" rx="4" stroke-dasharray="7 5"/>
+    <path d="M17 30 a6 6 0 0 1 -0.8-11.9 a8 8 0 0 1 15.7-1.5 A6.3 6.3 0 0 1 31.5 30 z"/>
+  </symbol>
+  <symbol id="icon-aws-ecs" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 4 l16 9 v22 l-16 9 l-16-9 V13 z"/>
+    <path d="M24 4 v18 m0 0 l16-9 m-16 9 l-16-9 M24 22 v21"/>
+  </symbol>
+</svg>

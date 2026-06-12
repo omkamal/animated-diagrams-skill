@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="stylesheet" href="./theme.css" />
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/DrawSVGPlugin.min.js"></script>
+    <script src="./vendor/MotionPathPlugin.min.js"></script>
+    <!-- <script src="./vendor/MorphSVGPlugin.min.js"></script>  uncomment only if morphing -->
+    <style>
+      html, body { width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="13"
+      data-width="1920"
+      data-height="1080"
+    >
+      <svg id="scene" viewBox="0 0 1920 1080" width="1920" height="1080">
+        <defs>
+          <!-- soft glow for pulses / highlights -->
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <!-- drop shadow for node cards -->
+          <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35" />
+          </filter>
+          <!-- icon <symbol>s are pasted here from assets/icons/*.svg as needed -->
+                  <symbol id="i-user" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="16" r="8"/><path d="M8 40 c0-9 7-14 16-14 s16 5 16 14"/></symbol>
+          <symbol id="i-gw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M7 24 h34 M24 7 c5 5 5 29 0 34 M24 7 c-5 5-5 29 0 34"/></symbol>
+          <symbol id="i-svc" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="6"/><path d="M24 6 v6 M24 36 v6 M6 24 h6 M36 24 h6 M11 11 l4 4 M33 33 l4 4 M37 11 l-4 4 M15 33 l-4 4"/></symbol>
+          <symbol id="i-db" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="24" cy="12" rx="14" ry="6"/><path d="M10 12 v24 c0 3 6 6 14 6 s14-3 14-6 V12 M10 24 c0 3 6 6 14 6 s14-3 14-6"/></symbol>
+        </defs>
+
+        <!-- camera rig: ALL pan/zoom animates this group's transform -->
+        <g id="camera">
+          <!-- anchor pins #camera's bbox origin to the canvas origin so
+               transformOrigin "0 0" equals canvas (0,0) — DO NOT REMOVE -->
+          <rect id="cam-anchor" x="0" y="0" width="0.01" height="0.01" fill="none" stroke="none"/>
+          <g id="layer-regions">
+            <g id="region-vpc" class="region"><rect x="150" y="408" width="1180" height="280" rx="24"/><text class="region-title" x="1294" y="446" text-anchor="end" font-size="24">السحابة الخاصة · VPC</text></g>
+          </g>
+          <g id="layer-edges">
+            <path id="edge-user-gw" class="edge" d="M 1485 548 C 1402 548 1402 548 1324 548"/>
+            <path id="edge-gw-svc" class="edge" d="M 1045 548 C 962 548 962 548 884 548"/>
+            <path id="edge-svc-db" class="edge" d="M 605 548 C 522 548 522 548 444 548"/>
+            <path id="head-user-gw" class="edge-head" d="M 1320 548 l 16 -8 v 16 z"/>
+            <path id="head-gw-svc" class="edge-head" d="M 880 548 l 16 -8 v 16 z"/>
+            <path id="head-svc-db" class="edge-head" d="M 440 548 l 16 -8 v 16 z"/>
+          </g>
+          <g id="layer-nodes">
+            <g id="node-user" class="node" filter="url(#card-shadow)"><rect x="1485" y="455" width="270" height="186" rx="18" stroke="var(--c-cyan)"/><use href="#i-user" x="1592" y="486" width="56" height="56" color="var(--c-cyan)"/><text x="1620" y="580" text-anchor="middle" font-size="28" font-weight="700">المستخدم</text><text x="1620" y="614" text-anchor="middle" class="label" font-size="20">المتصفح</text></g>
+            <g id="node-gw" class="node" filter="url(#card-shadow)"><rect x="1045" y="455" width="270" height="186" rx="18" stroke="var(--c-violet)"/><use href="#i-gw" x="1152" y="486" width="56" height="56" color="var(--c-violet)"/><text x="1180" y="580" text-anchor="middle" font-size="28" font-weight="700">البوابة</text><text x="1180" y="614" text-anchor="middle" class="label" font-size="20">Gateway</text></g>
+            <g id="node-svc" class="node" filter="url(#card-shadow)"><rect x="605" y="455" width="270" height="186" rx="18" stroke="var(--c-orange)"/><use href="#i-svc" x="712" y="486" width="56" height="56" color="var(--c-orange)"/><text x="740" y="580" text-anchor="middle" font-size="28" font-weight="700">الخدمة</text><text x="740" y="614" text-anchor="middle" class="label" font-size="20">API</text></g>
+            <g id="node-db" class="node" filter="url(#card-shadow)"><rect x="185" y="455" width="270" height="186" rx="18" stroke="var(--c-green)"/><use href="#i-db" x="292" y="486" width="56" height="56" color="var(--c-green)"/><text x="320" y="580" text-anchor="middle" font-size="28" font-weight="700">قاعدة البيانات</text><text x="320" y="614" text-anchor="middle" class="label" font-size="20">Database</text></g>
+          </g>
+          <g id="layer-labels"><!-- free-standing labels: <text id="label-*" class="label"> --></g>
+          <g id="layer-particles"><!-- data pulses: <circle id="pulse-*" class="pulse" r="8" opacity="0"> --></g>
+        </g>
+
+        <!-- HUD stays fixed during camera moves -->
+        <g id="hud">
+          <text id="hud-title" class="title" x="960" y="150" text-anchor="middle" opacity="0">رحلة الطلب</text>
+          <text id="hud-sub" class="subtitle" x="960" y="205" text-anchor="middle" opacity="0">من المستخدم إلى البيانات</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ════════════ TIMELINE (keep INLINE — `hyperframes snapshot` does not
+         execute external local scripts; render does, but snapshots are the
+         verification loop) ════════════ -->
+    <script>
+      gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
+
+      /* ── CAMERA RIG (for large flows — see references/camera-large-flows.md)
+         All helpers tween ONLY #camera; HUD stays fixed. getBBox/getPointAtLength
+         are deterministic under the frame-seeking renderer. ──────────────── */
+      const __root = document.getElementById("root");
+      const __W = +__root.dataset.width, __H = +__root.dataset.height;
+      const CAM_EASE = "power3.inOut";
+
+      // zoom so `sel`'s bbox is centered; zoom = explicit factor, or auto-fit
+      function camFit(tl, sel, { zoom, at = ">", dur = 1.2, pad = 1.25, ease = CAM_EASE } = {}) {
+        const b = document.querySelector(sel).getBBox();
+        const z = zoom ?? Math.min(__W / (b.width * pad), __H / (b.height * pad), 2.2);
+        const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      // fit the WHOLE scene (use when the diagram is larger than the canvas)
+      function camFitAll(tl, opts = {}) { return camFit(tl, "#camera", { pad: 1.08, ...opts }); }
+      // straight pan: keep current zoom, center on point (scene coords)
+      function camPanTo(tl, cx, cy, z, { at = ">", dur = 1.2, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      function camHome(tl, { at = ">", dur = 1.1, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: 1, x: 0, y: 0, duration: dur, ease }, at);
+      }
+      // follow-cam: track a path (the one a pulse rides) keeping it centered
+      function camFollow(tl, pathSel, { at = ">", dur = 2, zoom = 1.3, ease = "none" } = {}) {
+        const path = document.querySelector(pathSel);
+        const len = path.getTotalLength(), prog = { p: 0 };
+        return tl.to(prog, { p: 1, duration: dur, ease, onUpdate() {
+          const pt = path.getPointAtLength(prog.p * len);
+          gsap.set("#camera", { scale: zoom, x: __W / 2 - pt.x * zoom, y: __H / 2 - pt.y * zoom,
+            transformOrigin: "0 0" });
+        } }, at);
+      }
+      /* ═══ end camera rig ═══ */
+
+      
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.out" } });
+      const CY = 548;
+
+      tl.to("#hud-title", { opacity: 1, duration: 0.6 }, 0)
+        .to("#hud-sub", { opacity: 1, duration: 0.6 }, 0.25)
+        .from("#region-vpc", { opacity: 0, scale: 0.97, transformOrigin: "50% 50%", duration: 0.8 }, 0.3);
+
+      tl.from(["#node-user","#node-gw","#node-svc","#node-db"], {
+        opacity: 0, y: 26, scale: 0.85, transformOrigin: "50% 50%",
+        stagger: 0.14, duration: 0.55, ease: "back.out(1.4)" }, 0.9);
+
+      const edges = ["#edge-user-gw","#edge-gw-svc","#edge-svc-db"];
+      const heads = ["#head-user-gw","#head-gw-svc","#head-svc-db"];
+      edges.forEach((e,i)=>{ const at=2.4+i*0.45;
+        tl.from(e,{ drawSVG:"0%", duration:0.55, ease:"power1.inOut" }, at)
+          .from(heads[i],{ opacity:0, scale:0, transformOrigin:"50% 50%", duration:0.25, ease:"back.out(2)" }, at+0.42);
+      });
+
+      tl.set("#pulse-1",{ opacity:1 }, 4.8);
+      edges.forEach((p,i)=> tl.to("#pulse-1",{ motionPath:{ path:p, align:p, alignOrigin:[0.5,0.5] }, duration:0.95, ease:"none" }, 4.8+i*0.95));
+      tl.to("#pulse-1",{ opacity:0, duration:0.2 }, 7.7);
+      tl.to("#node-db rect",{ scale:1.05, transformOrigin:"50% 50%", duration:0.3, ease:"expo.out" }, 7.3)
+        .to("#node-db rect",{ scale:1, duration:0.5 }, 7.7);
+
+      tl.to("#camera",{ scale:1.3, x:1920/2-470*1.3, y:1080/2-CY*1.3, transformOrigin:"0 0", duration:1.2, ease:"power3.inOut" }, 8.6)
+        .to("#camera",{ scale:1, x:0, y:0, duration:1.1, ease:"power3.inOut" }, 10.8)
+        .to({}, { duration:1.1 });
+
+      // Determinism contract: paused + registered; key matches data-composition-id.
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+
+      // Browser preview fallback: autoplay when opened directly.
+      if (!window.__hyperframes && !navigator.webdriver) {
+        document.fonts.ready.then(() => tl.play());
+      }
+    </script>
+  </body>
+</html>

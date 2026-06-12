@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="stylesheet" href="./theme.css" />
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/DrawSVGPlugin.min.js"></script>
+    <script src="./vendor/MotionPathPlugin.min.js"></script>
+    <!-- <script src="./vendor/MorphSVGPlugin.min.js"></script>  uncomment only if morphing -->
+    <style>
+      html, body { width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="14"
+      data-width="1920"
+      data-height="1080"
+    >
+      <svg id="scene" viewBox="0 0 1920 1080" width="1920" height="1080">
+        <defs>
+          <!-- soft glow for pulses / highlights -->
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <!-- drop shadow for node cards -->
+          <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35" />
+          </filter>
+          <!-- icon <symbol>s are pasted here from assets/icons/*.svg as needed -->
+        </defs>
+
+        <!-- camera rig: ALL pan/zoom animates this group's transform -->
+        <g id="camera">
+          <!-- anchor pins #camera's bbox origin to the canvas origin so
+               transformOrigin "0 0" equals canvas (0,0) — DO NOT REMOVE -->
+          <rect id="cam-anchor" x="0" y="0" width="0.01" height="0.01" fill="none" stroke="none"/>
+          <g id="layer-regions">
+            <line id="lifeline-client" class="lifeline" x1="300" y1="292" x2="300" y2="930" stroke="var(--region-stroke)" stroke-width="2" stroke-dasharray="3 7"/>
+            <line id="lifeline-api" class="lifeline" x1="760" y1="292" x2="760" y2="930" stroke="var(--region-stroke)" stroke-width="2" stroke-dasharray="3 7"/>
+            <line id="lifeline-auth" class="lifeline" x1="1200" y1="292" x2="1200" y2="930" stroke="var(--region-stroke)" stroke-width="2" stroke-dasharray="3 7"/>
+            <line id="lifeline-db" class="lifeline" x1="1640" y1="292" x2="1640" y2="930" stroke="var(--region-stroke)" stroke-width="2" stroke-dasharray="3 7"/>
+          </g>
+          <g id="layer-edges">
+            <rect id="act-api" class="activation" x="751" y="372" width="18" height="468" rx="4" fill="var(--bg-raise)" stroke="var(--region-stroke)" stroke-width="1.5"/>
+            <rect id="act-auth" class="activation" x="1191" y="462" width="18" height="288" rx="4" fill="var(--bg-raise)" stroke="var(--region-stroke)" stroke-width="1.5"/>
+            <rect id="act-db" class="activation" x="1631" y="552" width="18" height="108" rx="4" fill="var(--bg-raise)" stroke="var(--region-stroke)" stroke-width="1.5"/>
+            <path id="msg-01" class="edge msg" data-dir="ltr" d="M 300 372 L 745 372"/>
+            <path id="msg-02" class="edge msg" data-dir="ltr" d="M 760 462 L 1185 462"/>
+            <path id="msg-03" class="edge msg" data-dir="ltr" d="M 1200 552 L 1625 552"/>
+            <path id="msg-04" class="edge msg msg--reply" data-dir="rtl" d="M 1640 660 L 1215 660" stroke-dasharray="9 7"/>
+            <path id="msg-05" class="edge msg msg--reply" data-dir="rtl" d="M 1200 750 L 775 750" stroke-dasharray="9 7"/>
+            <path id="msg-06" class="edge msg msg--reply" data-dir="rtl" d="M 760 840 L 315 840" stroke-dasharray="9 7"/>
+            <path id="head-01" class="edge-head" d="M 760 372 l -16 -8 v 16 z"/>
+            <path id="head-02" class="edge-head" d="M 1200 462 l -16 -8 v 16 z"/>
+            <path id="head-03" class="edge-head" d="M 1640 552 l -16 -8 v 16 z"/>
+            <path id="head-04" class="edge-head" d="M 1200 660 l 16 -8 v 16 z"/>
+            <path id="head-05" class="edge-head" d="M 760 750 l 16 -8 v 16 z"/>
+            <path id="head-06" class="edge-head" d="M 300 840 l 16 -8 v 16 z"/>
+          </g>
+          <g id="layer-nodes">
+            <g id="node-client" class="node" filter="url(#card-shadow)"><rect x="170" y="200" width="260" height="92" rx="16" stroke="var(--c-cyan)"/><text x="300" y="255" text-anchor="middle" font-size="28" font-weight="600">Client</text></g>
+            <g id="node-api" class="node" filter="url(#card-shadow)"><rect x="630" y="200" width="260" height="92" rx="16" stroke="var(--c-violet)"/><text x="760" y="255" text-anchor="middle" font-size="28" font-weight="600">API Gateway</text></g>
+            <g id="node-auth" class="node" filter="url(#card-shadow)"><rect x="1070" y="200" width="260" height="92" rx="16" stroke="var(--c-orange)"/><text x="1200" y="255" text-anchor="middle" font-size="28" font-weight="600">Auth Service</text></g>
+            <g id="node-db" class="node" filter="url(#card-shadow)"><rect x="1510" y="200" width="260" height="92" rx="16" stroke="var(--c-green)"/><text x="1640" y="255" text-anchor="middle" font-size="28" font-weight="600">Database</text></g>
+          </g>
+          <g id="layer-labels">
+            <text id="msgtext-01" class="label" x="530" y="356" text-anchor="middle" font-size="22">POST /login</text>
+            <text id="msgtext-02" class="label" x="980" y="446" text-anchor="middle" font-size="22">verify(credentials)</text>
+            <text id="msgtext-03" class="label" x="1420" y="536" text-anchor="middle" font-size="22">SELECT user</text>
+            <text id="msgtext-04" class="label" x="1420" y="644" text-anchor="middle" font-size="22">user record</text>
+            <text id="msgtext-05" class="label" x="980" y="734" text-anchor="middle" font-size="22">issue JWT</text>
+            <text id="msgtext-06" class="label" x="530" y="824" text-anchor="middle" font-size="22">200 OK · token</text>
+          </g>
+          <g id="layer-particles"><!-- data pulses: <circle id="pulse-*" class="pulse" r="8" opacity="0"> --></g>
+        </g>
+
+        <!-- HUD stays fixed during camera moves -->
+        <g id="hud">
+          <text id="hud-title" class="title" x="960" y="100" text-anchor="middle" opacity="0">Login &amp; token issuance</text>
+          <text id="hud-sub" class="subtitle" x="960" y="146" text-anchor="middle" opacity="0">request → verify → reply</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ════════════ TIMELINE (keep INLINE — `hyperframes snapshot` does not
+         execute external local scripts; render does, but snapshots are the
+         verification loop) ════════════ -->
+    <script>
+      gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
+
+      /* ── CAMERA RIG (for large flows — see references/camera-large-flows.md)
+         All helpers tween ONLY #camera; HUD stays fixed. getBBox/getPointAtLength
+         are deterministic under the frame-seeking renderer. ──────────────── */
+      const __root = document.getElementById("root");
+      const __W = +__root.dataset.width, __H = +__root.dataset.height;
+      const CAM_EASE = "power3.inOut";
+
+      // zoom so `sel`'s bbox is centered; zoom = explicit factor, or auto-fit
+      function camFit(tl, sel, { zoom, at = ">", dur = 1.2, pad = 1.25, ease = CAM_EASE } = {}) {
+        const b = document.querySelector(sel).getBBox();
+        const z = zoom ?? Math.min(__W / (b.width * pad), __H / (b.height * pad), 2.2);
+        const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      // fit the WHOLE scene (use when the diagram is larger than the canvas)
+      function camFitAll(tl, opts = {}) { return camFit(tl, "#camera", { pad: 1.08, ...opts }); }
+      // straight pan: keep current zoom, center on point (scene coords)
+      function camPanTo(tl, cx, cy, z, { at = ">", dur = 1.2, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      function camHome(tl, { at = ">", dur = 1.1, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: 1, x: 0, y: 0, duration: dur, ease }, at);
+      }
+      // follow-cam: track a path (the one a pulse rides) keeping it centered
+      function camFollow(tl, pathSel, { at = ">", dur = 2, zoom = 1.3, ease = "none" } = {}) {
+        const path = document.querySelector(pathSel);
+        const len = path.getTotalLength(), prog = { p: 0 };
+        return tl.to(prog, { p: 1, duration: dur, ease, onUpdate() {
+          const pt = path.getPointAtLength(prog.p * len);
+          gsap.set("#camera", { scale: zoom, x: __W / 2 - pt.x * zoom, y: __H / 2 - pt.y * zoom,
+            transformOrigin: "0 0" });
+        } }, at);
+      }
+      /* ═══ end camera rig ═══ */
+
+      
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.out" } });
+      const ids = ["client","api","auth","db"];
+      const M = n => "#msg-" + String(n).padStart(2,"0");
+      const H = n => "#head-" + String(n).padStart(2,"0");
+      const T = n => "#msgtext-" + String(n).padStart(2,"0");
+
+      tl.to("#hud-title", { opacity: 1, duration: 0.6 }, 0)
+        .to("#hud-sub", { opacity: 1, duration: 0.6 }, 0.25)
+        .from(ids.map(i => "#node-"+i), { opacity: 0, y: -22, scale: 0.9,
+            transformOrigin: "50% 50%", stagger: 0.1, duration: 0.5, ease: "back.out(1.4)" }, 0.4)
+        .from(".lifeline", { drawSVG: "0% 0%", stagger: 0.08, duration: 0.6, ease: "power1.inOut" }, 1.0)
+        .from(".activation", { scaleY: 0, opacity: 0, transformOrigin: "50% 0%", duration: 0.4 }, 1.4);
+
+      function play(n, at) {
+        tl.to(".msg",  { opacity: 0.25, duration: 0.3 }, at)
+          .to(".label",{ opacity: 0.25, duration: 0.3 }, at)
+          .from(M(n), { drawSVG: "0%", duration: 0.5, ease: "power1.inOut" }, at + 0.05)
+          .to(M(n),   { opacity: 1, duration: 0.1 }, at + 0.05)
+          .from(H(n), { opacity: 0, scale: 0, transformOrigin: "50% 50%", duration: 0.22, ease: "back.out(2)" }, at + 0.5)
+          .fromTo(T(n), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.3 }, at + 0.2);
+      }
+      [2.2, 3.3, 4.4, 5.6, 6.7, 7.8].forEach((at, i) => play(i + 1, at));
+
+      tl.to(".msg",   { opacity: 1, duration: 0.5 }, 9.0)
+        .to(".label", { opacity: 1, duration: 0.5 }, 9.0)
+        .to("#node-api rect, #node-auth rect", { scale: 1.04, transformOrigin: "50% 50%", duration: 0.3, ease: "expo.out", yoyo: true, repeat: 1 }, 9.4)
+        .to({}, { duration: 2.0 });
+
+      // Determinism contract: paused + registered; key matches data-composition-id.
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+
+      // Browser preview fallback: autoplay when opened directly.
+      if (!window.__hyperframes && !navigator.webdriver) {
+        document.fonts.ready.then(() => tl.play());
+      }
+    </script>
+  </body>
+</html>

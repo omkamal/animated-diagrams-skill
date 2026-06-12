@@ -1,0 +1,32 @@
+/* style: pastel — Soft Pastel. Cream canvas, candy categorical fills, Nunito,
+   very rounded. Motion: bouncy back.out(1.7), playful staggers. */
+:root {
+  --bg:            #fffdf7;
+  --bg-raise:      #fff7ec;
+  --text:          #4a4459;
+  --text-muted:    #8d869e;
+
+  --region-fill:   rgba(167, 139, 250, 0.06);
+  --region-stroke: #c4b5fd;
+
+  --node-fill:     #fef3e7;
+  --node-stroke:   #f0abfc;
+
+  --edge:          #b0a6c9;
+  --accent:        #fb923c;
+
+  --font-title:    "Nunito", sans-serif;
+  --font-body:     "Nunito", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  800;
+
+  --radius-node:   28px;
+  --stroke-node:   3px;
+  --stroke-edge:   3.5px;
+  --dash-region:   1 0;
+  --radius-region: 34px;
+
+  --c-blue:   #7dd3fc; --c-violet: #c4b5fd; --c-green: #86efac;
+  --c-amber:  #fcd34d; --c-rose:   #fda4af; --c-cyan:  #67e8f9;
+  --c-orange: #fdba74;
+}

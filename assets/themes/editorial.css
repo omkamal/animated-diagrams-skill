@@ -1,0 +1,33 @@
+/* style: editorial — Editorial Serif. Ivory canvas, ink + single crimson
+   accent, Fraunces display titles, hairline rules. Motion: slow elegant
+   fades, long overlapping crossfades, no bounce. */
+:root {
+  --bg:            #faf7f2;
+  --bg-raise:      #f3eee6;
+  --text:          #1f1b16;
+  --text-muted:    #7a7165;
+
+  --region-fill:   rgba(31, 27, 22, 0.02);
+  --region-stroke: #b5aa99;
+
+  --node-fill:     #faf7f2;
+  --node-stroke:   #1f1b16;
+
+  --edge:          #4a443c;
+  --accent:        #a3133e;
+
+  --font-title:    "Fraunces", serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "IBM Plex Mono", monospace;
+  --weight-title:  550;
+
+  --radius-node:   3px;
+  --stroke-node:   1.5px;
+  --stroke-edge:   1.5px;
+  --dash-region:   1 0;
+  --stroke-region: 1px;
+
+  --c-blue:   #31518f; --c-violet: #6d4f9e; --c-green: #3e6b4f;
+  --c-amber:  #9a7224; --c-rose:   #a3133e; --c-cyan:  #2e6e7e;
+  --c-orange: #a55320;
+}

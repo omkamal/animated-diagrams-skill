@@ -1,0 +1,35 @@
+animated-svg (animated-diagrams-skill)
+Copyright 2026 Omar Kamal
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product bundles third-party components that are licensed separately from
+the Apache-2.0 code above. Bundling these does not change the license of this
+project's own source — each component remains under its own license, listed
+below. Full texts and the complete file-by-file mapping are in
+licenses/THIRD_PARTY.md.
+
+────────────────────────────────────────────────────────────────────────────
+Bundled fonts — assets/fonts/*.woff2
+  SIL Open Font License, Version 1.1 (see licenses/OFL.txt)
+  Inter, Cairo, Amiri, Tajawal, Reem Kufi, Caveat, Fraunces, Archivo, Nunito,
+  Space Grotesk, IBM Plex Mono, JetBrains Mono — © their respective authors
+  (see licenses/THIRD_PARTY.md for per-family copyright lines).
+
+Bundled icons — assets/icons/fa6-common.svg
+  Font Awesome 6 Free icons — © Fonticons, Inc.
+  Icons: Creative Commons Attribution 4.0 International (CC-BY 4.0)
+  https://fontawesome.com · https://creativecommons.org/licenses/by/4.0/
+
+GSAP and plugins — assets/vendor/gsap/*.js (installed by scripts/setup.sh)
+  GSAP, DrawSVGPlugin, MotionPathPlugin, MorphSVGPlugin — © GreenSock, Inc.
+  Standard "No Charge" GSAP License (free, including commercial use).
+  https://gsap.com/community/standard-license/
+
+────────────────────────────────────────────────────────────────────────────
+Icons/emojis fetched at authoring time by scripts/fetch_clipart.mjs are NOT
+bundled in this repository. They are downloaded into the user's working
+project directory and remain under their respective set licenses (Apache-2.0,
+MIT, CC-BY 4.0, CC-BY-SA 4.0, ISC, …). See references/concept-illustrations.md
+for the full per-set license table. Attribution for those is the
+responsibility of the person generating the artifact.

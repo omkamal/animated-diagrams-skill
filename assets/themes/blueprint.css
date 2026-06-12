@@ -1,0 +1,41 @@
+/* style: blueprint — Engineering Blueprint. Deep blueprint blue, pale cyan
+   linework, mono labels. Motion: draw-on dominated — everything is drafted
+   (DrawSVG on regions too); minimal fades, technical feel. */
+:root {
+  --bg:            #0a2540;
+  --bg-raise:      #103154;
+  --text:          #e8f1fa;
+  --text-muted:    #8db4d8;
+
+  --region-fill:   rgba(141, 180, 216, 0.05);
+  --region-stroke: #4f81b0;
+
+  --node-fill:     #0d2c4d;
+  --node-stroke:   #9fd0f5;
+
+  --edge:          #9fd0f5;
+  --accent:        #ffd166;
+
+  --font-title:    "Space Grotesk", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "IBM Plex Mono", monospace;
+  --weight-title:  500;
+
+  --radius-node:   4px;
+  --radius-region: 6px;
+  --stroke-node:   1.5px;
+  --stroke-edge:   1.5px;
+  --dash-region:   6 5;
+  --stroke-region: 1px;
+  --tracking-region: 0.14em;
+
+  --c-blue:   #9fd0f5; --c-violet: #c4b5fd; --c-green: #6ee7b7;
+  --c-amber:  #ffd166; --c-rose:   #fda4af; --c-cyan:  #67e8f9;
+  --c-orange: #fdba74;
+}
+
+/* code-walkthrough token colors (blueprint canvas) */
+:root {
+  --tok-kw: #c4b5fd; --tok-def: #9fd0f5; --tok-builtin: #67e8f9;
+  --tok-str: #6ee7b7; --tok-num: #ffd166; --tok-comment: #5d87ad; --tok-deco: #fda4af;
+}

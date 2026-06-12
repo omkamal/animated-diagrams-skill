@@ -1,0 +1,11 @@
+{
+  "name": "animated-svg-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Runtime dependencies for the animated-svg Claude Code skill (GSAP + HyperFrames)",
+  "type": "module",
+  "dependencies": {
+    "gsap": "3.15.0",
+    "hyperframes": "0.6.91"
+  }
+}

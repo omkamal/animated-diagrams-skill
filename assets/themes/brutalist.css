@@ -1,0 +1,35 @@
+/* style: brutalist — Neo-Brutalist. White + acid yellow, hard black borders,
+   offset block shadows (no blur). Motion: abrupt — instant sets, hard snaps,
+   steps() and back.out(3) pops. Use the #hard-shadow filter (dx/dy offset,
+   stdDeviation 0) instead of #card-shadow. */
+:root {
+  --bg:            #fffef5;
+  --bg-raise:      #fef9c3;
+  --text:          #000000;
+  --text-muted:    #44403c;
+
+  --region-fill:   rgba(250, 204, 21, 0.1);
+  --region-stroke: #000000;
+
+  --node-fill:     #ffffff;
+  --node-stroke:   #000000;
+
+  --edge:          #000000;
+  --accent:        #facc15;
+
+  --font-title:    "Archivo", sans-serif;
+  --font-body:     "Archivo", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  800;
+
+  --radius-node:   0px;
+  --radius-region: 0px;
+  --stroke-node:   3.5px;
+  --stroke-edge:   4px;
+  --dash-region:   1 0;
+  --stroke-region: 3.5px;
+
+  --c-blue:   #2563eb; --c-violet: #7c3aed; --c-green: #16a34a;
+  --c-amber:  #facc15; --c-rose:   #ef4444; --c-cyan:  #06b6d4;
+  --c-orange: #f97316;
+}

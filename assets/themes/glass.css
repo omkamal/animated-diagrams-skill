@@ -1,0 +1,35 @@
+/* style: glass — Gradient Glass. Soft pastel-gradient canvas, translucent
+   white cards, airy. Motion: floaty — long power1.inOut drifts, gentle
+   scale-ins, slow particles. Pair node rects with filter="url(#card-shadow)". */
+:root {
+  --bg:            #eef2ff;   /* gradient painted by body rule below */
+  --bg-raise:      rgba(255, 255, 255, 0.6);
+  --text:          #1e2540;
+  --text-muted:    #5d6a94;
+
+  --region-fill:   rgba(255, 255, 255, 0.28);
+  --region-stroke: #a5b4fc;
+
+  --node-fill:     rgba(255, 255, 255, 0.72);
+  --node-stroke:   rgba(99, 102, 241, 0.55);
+
+  --edge:          #6d7bc4;
+  --accent:        #e879a0;
+
+  --font-title:    "Inter", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  600;
+
+  --radius-node:   20px;
+  --radius-region: 28px;
+  --stroke-node:   1.5px;
+  --stroke-edge:   2.5px;
+  --dash-region:   1 0;
+  --stroke-region: 1.5px;
+
+  --c-blue:   #6366f1; --c-violet: #a855f7; --c-green: #34d399;
+  --c-amber:  #fbbf24; --c-rose:   #fb7185; --c-cyan:  #22d3ee;
+  --c-orange: #fb923c;
+}
+html, body { background: linear-gradient(135deg, #eef2ff 0%, #fdf2f8 55%, #ecfeff 100%); }

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <link rel="stylesheet" href="./theme.css">
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/DrawSVGPlugin.min.js"></script>
+    <script src="./vendor/MotionPathPlugin.min.js"></script>
+    <!-- <script src="./vendor/MorphSVGPlugin.min.js"></script>  uncomment only if morphing -->
+    <style>
+      html, body { width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-ofop" id="root" data-composition-id="main" data-start="0" data-duration="14" data-width="1920" data-height="1080">
+      <svg data-hf-id="hf-xyt2" id="scene" viewBox="0 0 1920 1080" width="1920" height="1080">
+        <defs data-hf-id="hf-mh0t">
+          <!-- soft glow for pulses / highlights -->
+          <filter data-hf-id="hf-c7cj" id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <fegaussianblur data-hf-id="hf-aepa" stdDeviation="6" result="b" />
+            <femerge data-hf-id="hf-zn2o"><femergenode data-hf-id="hf-jge3" in="b" /><femergenode data-hf-id="hf-cmaw" in="SourceGraphic" /></femerge>
+          </filter>
+          <!-- drop shadow for node cards -->
+          <filter data-hf-id="hf-6muj" id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+            <fedropshadow data-hf-id="hf-7x38" dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35" />
+          </filter>
+          <symbol data-hf-id="hf-1iz7" id="icon-browser" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect data-hf-id="hf-4f88" x="5" y="8" width="38" height="32" rx="4" />
+            <path data-hf-id="hf-4lxt" d="M5 17 h38" />
+            <circle data-hf-id="hf-h5om" cx="11" cy="12.5" r="1.4" fill="currentColor" stroke="none" />
+            <circle data-hf-id="hf-ic1u" cx="16.5" cy="12.5" r="1.4" fill="currentColor" stroke="none" />
+            <circle data-hf-id="hf-atm4" cx="22" cy="12.5" r="1.4" fill="currentColor" stroke="none" />
+          </symbol>
+          <symbol data-hf-id="hf-0xhn" id="icon-aws-cloudfront" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle data-hf-id="hf-ez36" cx="24" cy="24" r="17" />
+            <circle data-hf-id="hf-04ww" cx="24" cy="13" r="3.5" />
+            <circle data-hf-id="hf-2915" cx="14" cy="31" r="3.5" />
+            <circle data-hf-id="hf-7ngz" cx="34" cy="31" r="3.5" />
+            <path data-hf-id="hf-lkml" d="M24 16.5 v6 M16.8 28.5 l4.5-3 M31.2 28.5 l-4.5-3" />
+          </symbol>
+          <symbol data-hf-id="hf-ee3s" id="icon-aws-alb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle data-hf-id="hf-ylvq" cx="12" cy="24" r="7" />
+            <circle data-hf-id="hf-2wpo" cx="38" cy="10" r="4" />
+            <circle data-hf-id="hf-rj79" cx="38" cy="24" r="4" />
+            <circle data-hf-id="hf-motm" cx="38" cy="38" r="4" />
+            <path data-hf-id="hf-xcz6" d="M18 21 L34 11.5 M19 24 h15 M18 27 L34 36.5" />
+          </symbol>
+          <symbol data-hf-id="hf-e2sy" id="icon-aws-lambda" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect data-hf-id="hf-uvmx" x="6" y="6" width="36" height="36" rx="6" />
+            <path data-hf-id="hf-7osy" d="M16 14 h6 l10 20 h-6 z M20 26 l-5 8" />
+          </symbol>
+          <symbol data-hf-id="hf-634j" id="icon-aws-dynamodb" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse data-hf-id="hf-62my" cx="24" cy="11" rx="13" ry="5.5" />
+            <path data-hf-id="hf-dsoi" d="M11 11 v26 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5 V11" />
+            <path data-hf-id="hf-87i8" d="M30 18 l-8 8 h6 l-4 8" stroke-width="3" />
+          </symbol>
+        </defs>
+
+        <!-- camera rig: ALL pan/zoom animates this group's transform -->
+        <g data-hf-id="hf-eue2" id="camera">
+          <g data-hf-id="hf-u88a" id="layer-regions">
+            <g data-hf-id="hf-n0ne" id="region-vpc" class="region">
+              <rect data-hf-id="hf-jbqg" x="740" y="360" width="1060" height="460" rx="22" />
+              <text data-hf-id="hf-bygk" class="region-title" x="776" y="410">AWS · VPC</text>
+            </g>
+          </g>
+          <g data-hf-id="hf-g1vv" id="layer-edges">
+            <path data-hf-id="hf-vse4" id="edge-browser-cdn" class="edge" d="M 400 545 C 460 545 470 545 528 545" />
+            <path data-hf-id="hf-q65k" id="head-browser-cdn" class="edge-head" d="M 542 545 l -16 -8 v 16 z" />
+            <path data-hf-id="hf-rasw" id="edge-cdn-alb" class="edge" d="M 694 545 C 754 545 764 545 818 545" />
+            <path data-hf-id="hf-ctxz" id="head-cdn-alb" class="edge-head" d="M 832 545 l -16 -8 v 16 z" />
+            <path data-hf-id="hf-8jan" id="edge-alb-fn" class="edge" d="M 1112 545 C 1172 545 1182 545 1226 545" />
+            <path data-hf-id="hf-2tpw" id="head-alb-fn" class="edge-head" d="M 1240 545 l -16 -8 v 16 z" />
+            <path data-hf-id="hf-5y4s" id="edge-fn-db" class="edge edge--flow" d="M 1380 622 C 1380 692 1450 690 1516 690" />
+            <path data-hf-id="hf-wues" id="head-fn-db" class="edge-head" d="M 1530 690 l -16 -8 v 16 z" />
+          </g>
+          <g data-hf-id="hf-t02y" id="layer-nodes">
+            <g data-hf-id="hf-hkb0" id="node-browser" class="node" filter="url(#card-shadow)">
+              <rect data-hf-id="hf-g3jm" x="180" y="470" width="220" height="150" rx="18" stroke="var(--c-cyan)" />
+              <use data-hf-id="hf-1viu" href="#icon-browser" x="206" y="498" width="52" height="52" color="var(--c-cyan)" />
+              <text data-hf-id="hf-pbd9" x="276" y="528" font-size="28" font-weight="600">Users</text>
+              <text data-hf-id="hf-1r06" x="276" y="562" class="label" font-size="21">Browser</text>
+            </g>
+            <g data-hf-id="hf-ekzp" id="node-cdn" class="node" filter="url(#card-shadow)">
+              <rect data-hf-id="hf-fx1g" x="542" y="470" width="152" height="150" rx="18" stroke="var(--c-violet)" />
+              <use data-hf-id="hf-k312" href="#icon-aws-cloudfront" x="591" y="488" width="54" height="54" color="var(--c-violet)" />
+              <text data-hf-id="hf-iuuh" x="618" y="586" text-anchor="middle" font-size="24" font-weight="600">CDN</text>
+            </g>
+            <g data-hf-id="hf-carn" id="node-alb" class="node" filter="url(#card-shadow)">
+              <rect data-hf-id="hf-0vfi" x="832" y="470" width="280" height="150" rx="18" stroke="var(--c-violet)" />
+              <use data-hf-id="hf-f3hy" href="#icon-aws-alb" x="856" y="498" width="52" height="52" color="var(--c-violet)" />
+              <text data-hf-id="hf-cyh3" x="920" y="528" font-size="26" font-weight="600">Load Balancer</text>
+              <text data-hf-id="hf-7ktb" x="920" y="562" class="label" font-size="21">App LB</text>
+            </g>
+            <g data-hf-id="hf-p8tk" id="node-fn" class="node" filter="url(#card-shadow)">
+              <rect data-hf-id="hf-t577" x="1240" y="470" width="280" height="150" rx="18" stroke="var(--c-orange)" />
+              <use data-hf-id="hf-9vjv" href="#icon-aws-lambda" x="1264" y="498" width="52" height="52" color="var(--c-orange)" />
+              <text data-hf-id="hf-dz3g" x="1328" y="528" font-size="26" font-weight="600">Checkout API</text>
+              <text data-hf-id="hf-qdnu" x="1328" y="562" class="label" font-size="21">Lambda</text>
+            </g>
+            <g data-hf-id="hf-1i8i" id="node-db" class="node" filter="url(#card-shadow)">
+              <rect data-hf-id="hf-ymjc" x="1530" y="615" width="230" height="150" rx="18" stroke="var(--c-green)" />
+              <use data-hf-id="hf-2jvd" href="#icon-aws-dynamodb" x="1556" y="643" width="52" height="52" color="var(--c-green)" />
+              <text data-hf-id="hf-x4dp" x="1622" y="673" font-size="26" font-weight="600">Orders</text>
+              <text data-hf-id="hf-dycf" x="1622" y="707" class="label" font-size="21">DynamoDB</text>
+            </g>
+          </g>
+          <g data-hf-id="hf-sney" id="layer-labels"><!-- free-standing labels: <text id="label-*" class="label"> --></g>
+          <g data-hf-id="hf-4v9c" id="layer-particles">
+            <circle data-hf-id="hf-kig4" id="pulse-1" class="pulse" r="9" filter="url(#glow)" opacity="0" />
+          </g>
+        </g>
+
+        <!-- HUD stays fixed during camera moves -->
+        <g data-hf-id="hf-f0be" id="hud">
+          <text data-hf-id="hf-u3ot" id="hud-title" class="title" x="960" y="150" text-anchor="middle" opacity="0">Serverless Checkout</text>
+          <text data-hf-id="hf-6czs" id="hud-sub" class="subtitle" x="960" y="200" text-anchor="middle" opacity="0">request path · edge to data</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ════════════ TIMELINE (keep INLINE — `hyperframes snapshot` does not
+         execute external local scripts; render does, but snapshots are the
+         verification loop) ════════════ -->
+    <script>
+      gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
+
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.out" } });
+
+      /* Act 1 · Establish */
+      tl.to("#hud-title", { opacity: 1, duration: 0.6 }, 0)
+        .to("#hud-sub", { opacity: 1, duration: 0.6 }, 0.25)
+        .from("#region-vpc", { opacity: 0, scale: 0.97, transformOrigin: "50% 50%", duration: 0.8 }, 0.3);
+
+      /* Act 2 · Build — nodes in request-flow order */
+      tl.from(["#node-browser", "#node-cdn", "#node-alb", "#node-fn", "#node-db"], {
+        opacity: 0, y: 26, scale: 0.85, transformOrigin: "50% 50%",
+        stagger: 0.14, duration: 0.55, ease: "back.out(1.4)",
+      }, 0.9);
+
+      /* Act 3 · Connect — solid edges draw, heads pop as each lands; dotted flow fades */
+      const edges = ["#edge-browser-cdn", "#edge-cdn-alb", "#edge-alb-fn"];
+      const heads = ["#head-browser-cdn", "#head-cdn-alb", "#head-alb-fn"];
+      edges.forEach((e, i) => {
+        const at = 2.4 + i * 0.45;
+        tl.from(e, { drawSVG: "0%", duration: 0.55, ease: "power1.inOut" }, at)
+          .from(heads[i], { opacity: 0, scale: 0, transformOrigin: "50% 50%", duration: 0.25, ease: "back.out(2)" }, at + 0.42);
+      });
+      tl.from("#edge-fn-db", { opacity: 0, duration: 0.4 }, 3.9)
+        .from("#head-fn-db", { opacity: 0, scale: 0, transformOrigin: "50% 50%", duration: 0.25, ease: "back.out(2)" }, 4.1);
+
+      /* Act 4 · Flow — a request pulse rides the whole path; dotted line drifts */
+      tl.set("#pulse-1", { opacity: 1 }, 4.8);
+      edges.forEach((p, i) => {
+        tl.to("#pulse-1", {
+          motionPath: { path: p, align: p, alignOrigin: [0.5, 0.5] },
+          duration: 0.9, ease: "none",
+        }, 4.8 + i * 0.9);
+      });
+      tl.to("#pulse-1", {
+        motionPath: { path: "#edge-fn-db", align: "#edge-fn-db", alignOrigin: [0.5, 0.5] },
+        duration: 0.9, ease: "none",
+      }, 7.5)
+        .to("#pulse-1", { opacity: 0, duration: 0.2 }, 8.4);
+      tl.to("#edge-fn-db", { strokeDashoffset: -14 * 10, duration: 8, ease: "none" }, 5.0);
+
+      /* emphasis: Lambda pops as the pulse arrives */
+      tl.to("#node-fn rect", { scale: 1.05, transformOrigin: "50% 50%", duration: 0.3, ease: "expo.out" }, 6.6)
+        .to("#node-fn rect", { scale: 1, duration: 0.5, ease: "power2.in" }, 6.9);
+
+      /* Act 5 · Focus on compute+data, then resolve & hold */
+      tl.to("#camera", {
+        scale: 1.35, x: 1920 / 2 - 1495 * 1.35, y: 1080 / 2 - 615 * 1.35,
+        transformOrigin: "0 0", duration: 1.2, ease: "power3.inOut",
+      }, 8.8)
+        .to("#camera", { scale: 1, x: 0, y: 0, duration: 1.1, ease: "power3.inOut" }, 11.2)
+        .to({}, { duration: 1.7 });   /* hold: 12.3 → 14.0 */
+
+      // Determinism contract: paused + registered; key matches data-composition-id.
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+
+      // Browser preview fallback: autoplay when opened directly.
+      if (!window.__hyperframes && !navigator.webdriver) {
+        document.fonts.ready.then(() => tl.play());
+      }
+    </script>
+  </body>
+</html>

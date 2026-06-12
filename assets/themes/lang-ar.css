@@ -1,0 +1,19 @@
+/* lang-ar — Arabic / RTL overlay, appended AFTER the style preset by
+   `new_project.sh --lang ar`. Pairs Arabic fonts with the active style and
+   fixes Arabic typography rules. Flow GEOMETRY must also be mirrored when
+   authoring (right→left, see references/arabic-rtl.md). */
+:root {
+  --font-title: "Cairo", "Inter", sans-serif;     /* editorial/sketch styles: switch to "Amiri" */
+  --font-body:  "Cairo", "Inter", sans-serif;
+  --tracking-region: 0;          /* NEVER letter-space Arabic script */
+}
+
+/* Arabic shaping + bidi: keep mixed Latin tokens (API, HTTP) readable */
+#scene text, #hud text {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  letter-spacing: 0;
+}
+
+/* Arabic glyphs read smaller at equal size — bump labels slightly */
+#scene .label { font-size: 110%; }

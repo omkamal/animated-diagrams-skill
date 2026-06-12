@@ -1,0 +1,32 @@
+/* style: vivid — Bold Geometric. White canvas, saturated flat fills, thick
+   strokes, Space Grotesk. Motion: snappy expo.out, fast staggers, confident. */
+:root {
+  --bg:            #ffffff;
+  --bg-raise:      #f1f5f9;
+  --text:          #111827;
+  --text-muted:    #6b7280;
+
+  --region-fill:   rgba(17, 24, 39, 0.03);
+  --region-stroke: #9ca3af;
+
+  --node-fill:     #ffffff;
+  --node-stroke:   #111827;
+
+  --edge:          #111827;
+  --accent:        #f59e0b;
+
+  --font-title:    "Space Grotesk", sans-serif;
+  --font-body:     "Space Grotesk", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  700;
+
+  --radius-node:   12px;
+  --stroke-node:   3.5px;
+  --stroke-edge:   4px;
+  --dash-region:   1 0;
+  --stroke-region: 3px;
+
+  --c-blue:   #2563eb; --c-violet: #8b5cf6; --c-green: #10b981;
+  --c-amber:  #f59e0b; --c-rose:   #f43f5e; --c-cyan:  #06b6d4;
+  --c-orange: #f97316;
+}

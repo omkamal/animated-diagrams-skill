@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, height=920" />
+    <link rel="stylesheet" href="./theme.css" />
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/DrawSVGPlugin.min.js"></script>
+    <script src="./vendor/MotionPathPlugin.min.js"></script>
+    <!-- <script src="./vendor/MorphSVGPlugin.min.js"></script>  uncomment only if morphing -->
+    <style>
+      html, body { width: 1200px; height: 920px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="12"
+      data-width="1200"
+      data-height="920"
+    >
+      <svg id="scene" viewBox="0 0 1200 920" width="1200" height="920">
+        <defs>
+          <!-- soft glow for pulses / highlights -->
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <!-- drop shadow for node cards -->
+          <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35" />
+          </filter>
+          <!-- icon <symbol>s are pasted here from assets/icons/*.svg as needed -->
+        </defs>
+
+        <!-- camera rig: ALL pan/zoom animates this group's transform -->
+        <g id="camera">
+          <!-- anchor pins #camera's bbox origin to the canvas origin so
+               transformOrigin "0 0" equals canvas (0,0) — DO NOT REMOVE -->
+          <rect id="cam-anchor" x="0" y="0" width="0.01" height="0.01" fill="none" stroke="none"/>
+          <g id="layer-regions"><!-- region containers: <g id="region-*" class="region"> --></g>
+          <g id="layer-edges"><!-- edges: <path id="edge-<src>-<dst>" class="edge"> + .edge-head arrowheads --></g>
+          <g id="layer-nodes"><!-- nodes: <g id="node-*" class="node"> --></g>
+          <g id="layer-labels">
+            <g id="term" filter="url(#card-shadow)">
+            <rect x="48" y="70" width="1104" height="788" rx="20" fill="var(--bg-raise)" stroke="var(--region-stroke)" stroke-width="1.5"/>
+            <circle cx="92" cy="112" r="9" fill="#fb7185"/>
+            <circle cx="124" cy="112" r="9" fill="#fbbf24"/>
+            <circle cx="156" cy="112" r="9" fill="#34d399"/>
+            <text x="600" y="120" text-anchor="middle" class="mono" font-size="22" fill="var(--text-muted)">install · animated-svg</text>
+            <line x1="48" y1="146" x2="1152" y2="146" stroke="var(--region-stroke)" stroke-width="1"/>
+          </g>
+          <g id="caret" opacity="0"><rect x="90" y="228" width="14" height="30" rx="2" fill="var(--c-violet)"/></g>
+          <g class="ln" id="ln-0" data-grp="1"><text x="90" y="250" font-size="27" class="mono" fill="var(--tok-comment)" font-style="italic"># 1 · clone the repository</text></g>
+            <g class="ln" id="ln-1" data-grp="1"><text x="90" y="302" font-size="27" class="mono"><tspan fill="var(--c-violet)" font-weight="700">$ </tspan><tspan fill="var(--text)">git clone github.com/omkamal/animated-diagrams-skill</tspan></text></g>
+            <g class="ln" id="ln-2" data-grp="1"><text x="90" y="354" font-size="27" class="mono"><tspan fill="var(--c-violet)" font-weight="700">$ </tspan><tspan fill="var(--text)">cd animated-diagrams-skill</tspan></text></g>
+            <g class="ln" id="ln-3" data-grp="2"><text x="90" y="406" font-size="27" class="mono" fill="var(--tok-comment)" font-style="italic"># 2 · one-time setup  (deps · GSAP · Chrome)</text></g>
+            <g class="ln" id="ln-4" data-grp="2"><text x="90" y="458" font-size="27" class="mono"><tspan fill="var(--c-violet)" font-weight="700">$ </tspan><tspan fill="var(--text)">bash scripts/setup.sh</tspan></text></g>
+            <g class="ln" id="ln-5" data-grp="2"><text x="90" y="510" font-size="27" class="mono" fill="var(--c-green)" font-weight="700">✓ animated-svg setup complete</text></g>
+            <g class="ln" id="ln-6" data-grp="3"><text x="90" y="562" font-size="27" class="mono" fill="var(--tok-comment)" font-style="italic"># 3 · expose it to Claude Code</text></g>
+            <g class="ln" id="ln-7" data-grp="3"><text x="90" y="614" font-size="27" class="mono"><tspan fill="var(--c-violet)" font-weight="700">$ </tspan><tspan fill="var(--text)">ln -s &quot;$(pwd)&quot; ~/.claude/skills/animated-svg</tspan></text></g>
+            <g class="ln" id="ln-8" data-grp="4"><text x="90" y="666" font-size="27" class="mono" fill="var(--tok-comment)" font-style="italic"># 4 · (optional) install the batch agent</text></g>
+            <g class="ln" id="ln-9" data-grp="4"><text x="90" y="718" font-size="27" class="mono"><tspan fill="var(--c-violet)" font-weight="700">$ </tspan><tspan fill="var(--text)">cp agents/diagram-animator.md ~/.claude/agents/</tspan></text></g>
+            <g class="ln" id="ln-10" data-grp="5"><text x="90" y="770" font-size="27" class="mono" fill="var(--c-green)" font-weight="700">✓ ready — ask Claude: &quot;animate this diagram&quot;</text></g>
+          </g>
+          <g id="layer-particles"><!-- data pulses: <circle id="pulse-*" class="pulse" r="8" opacity="0"> --></g>
+        </g>
+
+        <!-- HUD stays fixed during camera moves -->
+        <g id="hud"></g>
+      </svg>
+    </div>
+
+    <!-- ════════════ TIMELINE (keep INLINE — `hyperframes snapshot` does not
+         execute external local scripts; render does, but snapshots are the
+         verification loop) ════════════ -->
+    <script>
+      gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
+
+      /* ── CAMERA RIG (for large flows — see references/camera-large-flows.md)
+         All helpers tween ONLY #camera; HUD stays fixed. getBBox/getPointAtLength
+         are deterministic under the frame-seeking renderer. ──────────────── */
+      const __root = document.getElementById("root");
+      const __W = +__root.dataset.width, __H = +__root.dataset.height;
+      const CAM_EASE = "power3.inOut";
+
+      // zoom so `sel`'s bbox is centered; zoom = explicit factor, or auto-fit
+      function camFit(tl, sel, { zoom, at = ">", dur = 1.2, pad = 1.25, ease = CAM_EASE } = {}) {
+        const b = document.querySelector(sel).getBBox();
+        const z = zoom ?? Math.min(__W / (b.width * pad), __H / (b.height * pad), 2.2);
+        const cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      // fit the WHOLE scene (use when the diagram is larger than the canvas)
+      function camFitAll(tl, opts = {}) { return camFit(tl, "#camera", { pad: 1.08, ...opts }); }
+      // straight pan: keep current zoom, center on point (scene coords)
+      function camPanTo(tl, cx, cy, z, { at = ">", dur = 1.2, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: z, x: __W / 2 - cx * z, y: __H / 2 - cy * z,
+          transformOrigin: "0 0", duration: dur, ease }, at);
+      }
+      function camHome(tl, { at = ">", dur = 1.1, ease = CAM_EASE } = {}) {
+        return tl.to("#camera", { scale: 1, x: 0, y: 0, duration: dur, ease }, at);
+      }
+      // follow-cam: track a path (the one a pulse rides) keeping it centered
+      function camFollow(tl, pathSel, { at = ">", dur = 2, zoom = 1.3, ease = "none" } = {}) {
+        const path = document.querySelector(pathSel);
+        const len = path.getTotalLength(), prog = { p: 0 };
+        return tl.to(prog, { p: 1, duration: dur, ease, onUpdate() {
+          const pt = path.getPointAtLength(prog.p * len);
+          gsap.set("#camera", { scale: zoom, x: __W / 2 - pt.x * zoom, y: __H / 2 - pt.y * zoom,
+            transformOrigin: "0 0" });
+        } }, at);
+      }
+      /* ═══ end camera rig ═══ */
+
+      
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.out" } });
+      const Y0 = 250, LH = 52, X0 = 90;
+
+      tl.from("#term", { opacity: 0, y: 16, scale: 0.98, transformOrigin: "50% 30%", duration: 0.6, ease: "power3.out" }, 0.1);
+
+      tl.from("#ln-0", { opacity: 0, x: -8, duration: 0.3 }, 0.80);
+      tl.set("#caret", { attr: { y: 280 }, opacity: 1 }, 1.25)
+        .from("#ln-1", { opacity: 0, duration: 0.35 }, 1.37)
+        .to("#caret", { opacity: 0, duration: 0.15 }, 1.80);
+      tl.set("#caret", { attr: { y: 332 }, opacity: 1 }, 2.10)
+        .from("#ln-2", { opacity: 0, duration: 0.35 }, 2.22)
+        .to("#caret", { opacity: 0, duration: 0.15 }, 2.65);
+      tl.from("#ln-3", { opacity: 0, x: -8, duration: 0.3 }, 2.95);
+      tl.set("#caret", { attr: { y: 436 }, opacity: 1 }, 3.40)
+        .from("#ln-4", { opacity: 0, duration: 0.35 }, 3.52)
+        .to("#caret", { opacity: 0, duration: 0.15 }, 3.95);
+      tl.from("#ln-5", { opacity: 0, x: -10, scale: 0.92, transformOrigin: "0%% 50%%", duration: 0.4, ease: "back.out(2)" }, 4.25);
+      tl.from("#ln-6", { opacity: 0, x: -8, duration: 0.3 }, 4.95);
+      tl.set("#caret", { attr: { y: 592 }, opacity: 1 }, 5.40)
+        .from("#ln-7", { opacity: 0, duration: 0.35 }, 5.52)
+        .to("#caret", { opacity: 0, duration: 0.15 }, 5.95);
+      tl.from("#ln-8", { opacity: 0, x: -8, duration: 0.3 }, 6.25);
+      tl.set("#caret", { attr: { y: 696 }, opacity: 1 }, 6.70)
+        .from("#ln-9", { opacity: 0, duration: 0.35 }, 6.82)
+        .to("#caret", { opacity: 0, duration: 0.15 }, 7.25);
+      tl.from("#ln-10", { opacity: 0, x: -10, scale: 0.92, transformOrigin: "0%% 50%%", duration: 0.4, ease: "back.out(2)" }, 7.55);
+      tl.to({}, { duration: 3.55 });
+
+      // Determinism contract: paused + registered; key matches data-composition-id.
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+
+      // Browser preview fallback: autoplay when opened directly.
+      if (!window.__hyperframes && !navigator.webdriver) {
+        document.fonts.ready.then(() => tl.play());
+      }
+    </script>
+  </body>
+</html>

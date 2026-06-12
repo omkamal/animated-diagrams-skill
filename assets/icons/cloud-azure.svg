@@ -1,0 +1,43 @@
+<!-- cloud-azure.svg — ORIGINAL stylized geometric icons evoking Azure service roles.
+     NOT official Microsoft Azure icons. 48x48 viewBox, stroke="currentColor". -->
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-az-vm" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="8" width="36" height="26" rx="3"/>
+    <path d="M16 42 h16 M24 34 v8"/>
+    <path d="M17 16 l-5 5 l5 5 M31 16 l5 5 l-5 5"/>
+  </symbol>
+  <symbol id="icon-az-aks" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 5 l16 9 v20 l-16 9 l-16-9 V14 z"/>
+    <path d="M24 14 l8 4.5 v9 l-8 4.5 l-8-4.5 v-9 z"/>
+  </symbol>
+  <symbol id="icon-az-functions" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 5 L12 26 h9 l-3 17 L34 22 h-9 z"/>
+  </symbol>
+  <symbol id="icon-az-servicebus" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="17" width="38" height="14" rx="3"/>
+    <path d="M12 24 h3 M19 24 h3 M26 24 h3" stroke-width="3"/>
+    <path d="M36 20 l4 4 l-4 4"/>
+  </symbol>
+  <symbol id="icon-az-cosmos" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="10"/>
+    <ellipse cx="24" cy="24" rx="20" ry="7.5" transform="rotate(-25 24 24)"/>
+    <circle cx="40" cy="15" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="8" cy="33" r="2" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-az-blob" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 38 a9 9 0 0 1 -1.1-17.9 a12 12 0 0 1 23.6-2.3 A9.3 9.3 0 0 1 35 38 z"/>
+    <circle cx="19" cy="30" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="26" cy="30" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="33" cy="30" r="2" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-az-appgw" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="8"/>
+    <path d="M24 16 V6 m0 36 v-10 M16 24 H6 m36 0 h-10"/>
+    <path d="M9 9 l6.5 6.5 M39 9 l-6.5 6.5 M9 39 l6.5-6.5 M39 39 l-6.5-6.5"/>
+  </symbol>
+  <symbol id="icon-az-sql" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="24" cy="11" rx="13" ry="5.5"/>
+    <path d="M11 11 v26 c0 3 5.8 5.5 13 5.5 s13-2.5 13-5.5 V11"/>
+    <path d="M18 27 a6 5 0 1 0 6 5 m4-10 v10 h6"/>
+  </symbol>
+</svg>

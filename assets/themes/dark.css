@@ -1,0 +1,35 @@
+/* style: dark — Neon Dark. Deep-space navy, neon strokes, glow pulses.
+   Motion: classic 5-act with glow emphasis; particles shine here. */
+:root {
+  --bg:            #0b1021;
+  --bg-raise:      #131a33;
+  --text:          #f1f5f9;
+  --text-muted:    #94a3b8;
+
+  --region-fill:   rgba(56, 189, 248, 0.04);
+  --region-stroke: #3b5e8c;
+
+  --node-fill:     #16203d;
+  --node-stroke:   #38bdf8;
+
+  --edge:          #64a8e0;
+  --accent:        #facc15;
+
+  --font-title:    "Inter", sans-serif;
+  --font-body:     "Inter", sans-serif;
+  --font-mono:     "JetBrains Mono", monospace;
+
+  --radius-node:   18px;
+  --stroke-node:   2.5px;
+  --stroke-edge:   3.5px;
+
+  --c-blue:   #38bdf8; --c-violet: #a78bfa; --c-green: #34d399;
+  --c-amber:  #fbbf24; --c-rose:   #fb7185; --c-cyan:  #22d3ee;
+  --c-orange: #fb923c;
+}
+
+/* code-walkthrough token colors (dark canvas) */
+:root {
+  --tok-kw: #c4b5fd; --tok-def: #7dd3fc; --tok-builtin: #67e8f9;
+  --tok-str: #86efac; --tok-num: #fdba74; --tok-comment: #64748b; --tok-deco: #f0abfc;
+}

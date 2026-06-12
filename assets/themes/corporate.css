@@ -1,0 +1,31 @@
+/* style: corporate — Corporate Indigo. Cool gray canvas, indigo/navy system,
+   Archivo. Motion: crisp, restrained, no bounce — power3 in/out only. */
+:root {
+  --bg:            #f4f6fa;
+  --bg-raise:      #ffffff;
+  --text:          #1e2a4a;
+  --text-muted:    #5d6b8a;
+
+  --region-fill:   rgba(49, 70, 150, 0.04);
+  --region-stroke: #8e9bbd;
+
+  --node-fill:     #ffffff;
+  --node-stroke:   #314696;
+
+  --edge:          #51608a;
+  --accent:        #c8881a;
+
+  --font-title:    "Archivo", sans-serif;
+  --font-body:     "Archivo", sans-serif;
+  --font-mono:     "IBM Plex Mono", monospace;
+  --weight-title:  600;
+
+  --radius-node:   8px;
+  --stroke-node:   2px;
+  --stroke-edge:   2.5px;
+  --dash-region:   2 0;          /* solid, formal region borders */
+
+  --c-blue:   #314696; --c-violet: #5b4ba6; --c-green: #1f7a55;
+  --c-amber:  #c8881a; --c-rose:   #b03554; --c-cyan:  #1a7f96;
+  --c-orange: #bf5b22;
+}

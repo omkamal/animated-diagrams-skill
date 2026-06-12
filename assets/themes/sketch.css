@@ -1,0 +1,35 @@
+/* style: sketch — Hand-drawn whiteboard. Paper white, charcoal strokes,
+   Caveat handwriting. Motion: draw-on heavy, slight overshoot wobble. */
+:root {
+  --bg:            #fdfcf8;
+  --bg-raise:      #f7f5ee;
+  --text:          #2b2b2b;
+  --text-muted:    #6f6a60;
+
+  --region-fill:   rgba(43, 43, 43, 0.025);
+  --region-stroke: #9c958a;
+
+  --node-fill:     #fdfcf8;
+  --node-stroke:   #2b2b2b;
+
+  --edge:          #2b2b2b;
+  --accent:        #d97706;
+
+  --font-title:    "Caveat", cursive;
+  --font-body:     "Caveat", cursive;
+  --font-mono:     "JetBrains Mono", monospace;
+  --weight-title:  700;
+
+  --radius-node:   10px;
+  --stroke-node:   2.5px;
+  --stroke-edge:   2.5px;
+  --dash-edge:     1 0;          /* solid but linecap-round gives a pen feel */
+  --dash-region:   10 8;
+  --tracking-region: 0.02em;
+
+  --c-blue:   #3b6ea5; --c-violet: #7b5ea7; --c-green: #4a7c59;
+  --c-amber:  #c0883e; --c-rose:   #b85c6e; --c-cyan:  #4a8a96;
+  --c-orange: #c06b3e;
+}
+/* sketch labels read better slightly larger */
+#scene text { font-size: 110%; }
